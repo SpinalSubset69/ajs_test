@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AJSExample</title>
+    <link rel="stylesheet" href="~/js/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/js/mdi/css/materialdesignicons.css" />
+
+</head>
+
+<body ng-app="mainModule" ng-controller="mainCtrl">
+    <header>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <p><strong>NgApp</strong></p>
+                <md-button ng-click="openSideNav();">
+                    <md-icon style="margin-top: -14px;" class="mdi mdi-plus-circle"></md-icon>
+                    New Card
+                </md-button>
+            </div>
+        </md-toolbar>
+    </header>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="sideNav" md-whiteframe="5">
+        <div layout="column" layout-wrap layout-padding>
+            <h2>Create a Product:</h2>
+            <md-input-container>
+                <label>Product Name:</label>
+                <input ng-model="product.name">
+            </md-input-container>
+            <md-input-container>
+                <label>Product Price:</label>
+                <input ng-model="product.price">
+            </md-input-container>
+            <md-input-container>
+                <label>Product Description:</label>
+                <input ng-model="product.description">
+            </md-input-container>
+            <h5>Product Image:</h5>
+            <p>{{ product.image }}</p>
+            <input onchange="angular.element(this).scope().fileSelected(this)" class="ng-hide" id="input-file-id"
+                type="file" />
+            <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
+            <md-button class="md-raised md-primary" ng-click="createProduct();">Create</md-button>
+        </div>
+    </md-sidenav>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - AJSExample - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/js/angular.min.js"></script>
+    <script src="~/js/angular-animate/angular-animate.min.js"></script>
+    <script src="~/js/angular-aria/angular-aria.min.js"></script>
+    <script src="~/js/angular-messages/angular-messages.min.js"></script>
+    <script src="~/js/angular-material/angular-material.min.js"></script>
+    <script src="~/js/angular-route.min.js"></script>
+    <script src="~/js/angular-resource.min.js"></script>
+    <script src="~/js/angular-resource.min.js"></script>
+    <script src="~/js/Modules/app.js"></script>
+    <script src="~/js/Controllers/classifiedsController.js"></script>
+    <script src="~/js/Controllers/product.fac.js"></script>
+    <script src="~/js/Util/base64.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

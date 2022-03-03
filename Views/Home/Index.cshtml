@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div ng-controller="mainCtrl">
+    <md-content ng-if="products.length > 0" class="md-padding" layout="row" layout-wrap layout-align="center center">
+        <md-card class="card card-wrapper" flex="30" ng-repeat="product in products">
+            <md-card-title>
+                <md-card-title-text>
+                    <h1 class="md-title">{{ product.name }}</h1>
+                    <h3>{{ product.description }}</h3>
+                    <p>{{ product.created_At | date }} </p>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img class="card-img" ng-if="product.image" ng-src="/uploads/{{ product.image }}"
+                        alt="Product Image">
+                    <img class="card-img" ng-if="!product.image" src="~/assets/wallpaper.png" alt="Product Image">
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end">
+                <md-button class="md-raised md-primary">Edit</md-button>
+                <md-button class="md-raised ">Delete</md-button>
+            </md-card-actions>
+        </md-card>
+    </md-content>
+
+    <h1 ng-if="products.length === 0">No Products Saved Yet!!</h1>
+</div>
